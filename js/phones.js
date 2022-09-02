@@ -1,19 +1,26 @@
 // fetching the meal api from the TheMealDB API
-const loadMealDB = (searchPhoneName) => {
+const loadPhones = (searchPhoneName) => {
     const url = ` https://openapi.programming-hero.com/api/phones?search=${searchPhoneName}`;
     fetch(url)
         .then((res) => res.json())
-        .then((data) => displayData(data.data));
+        .then((data) => displayPhones(data.data));
 };
 
-const displayData = (phones) => {
+const displayPhones = (phones) => {
     const thePhoneList = document.getElementById("thePhoneList");
-    thePhoneList.innerHTML = "";
-    console.log(phones)
+    const noPhoneMessageField = document.getElementById("noPhoneMessage");
+    thePhoneList.textContent = "";
+    console.log(phones);
+    // display no phone found message
+    if (phones.length === 0) {
+        noPhoneMessageField.classList.remove("d-none");
+    } else {
+        noPhoneMessageField.classList.add("d-none");
+    }
     phones.forEach((phone) => {
         const column = document.createElement("div");
-        column.classList.add("col-md-3")
-        column.classList.add("mb-4")
+        column.classList.add("col-md-3");
+        column.classList.add("mb-4");
         column.innerHTML = `
             <div class="card p-3 pb-1">
                 <img src="${phone.image}" style="height: 350px" class="card-img-top img-fluid" alt="${phone.phone_name}" />
@@ -25,15 +32,34 @@ const displayData = (phones) => {
                 </div>
             </div>
         `;
-        thePhoneList.appendChild(column)
+        thePhoneList.appendChild(column);
     });
+    // stop spinner
+    toggleSpinner(false);
 };
 
+const toggleSpinner = (isLoading) => {
+    const loadingFeild = document.getElementById("loading");
+    if (isLoading) {
+        loadingFeild.classList.remove("d-none");
+    } else {
+        loadingFeild.classList.add("d-none");
+    }
+};
 
 const searchPhones = () => {
-    console.log("aaa")
+    // start spinner
+    toggleSpinner(true);
+    const thePhoneList = document.getElementById("thePhoneList");
+    thePhoneList.textContent = "";
+
     const phoneSearchField = document.getElementById("phoneSearchId");
     const phoneSearchValue = phoneSearchField.value;
-    loadMealDB(phoneSearchValue)
-}
-loadMealDB("iphone");
+
+    loadPhones(phoneSearchValue);
+};
+
+(() => {
+    toggleSpinner(true);
+    loadPhones("samsung");
+})();

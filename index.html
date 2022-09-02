@@ -43,16 +43,22 @@
                 </div>
             </div>
         </section><!-- End The Phone Search -->
-        
+
         <!-- Start No Phone Error Message -->
         <section id="noPhoneMessage" class="mt-5 d-none">
             <div class="container">
-                <h2 class="text-center text-warning">There Are No Phones Here</h2>
+                <h2 class="text-center text-warning">
+                    There Are No Phones Here
+                </h2>
             </div>
         </section><!-- End No Phone Error Message -->
 
         <!-- Start Loading -->
-        <section style="height:400px" id="loading" class="mt-5 d-flex align-items-center d-none">
+        <section
+            style="height: 400px"
+            id="loading"
+            class="mt-5 d-flex align-items-center d-none"
+        >
             <div class="container text-center">
                 <div class="spinner-border text-info" role="status">
                     <span class="visually-hidden">Loading...</span>
@@ -66,6 +72,75 @@
                 <div class="row" id="thePhoneList"></div>
             </div>
         </section><!-- End The List Phone -->
+
+        <!-- Start Show Button -->
+        <section id="showButtonId" class="mt-1">
+            <div class="container text-center">
+                <button
+                    id="showbtnClick"
+                    type="button"
+                    class="btn btn-outline-info"
+                >
+                    Show Button
+                </button>
+            </div>
+        </section><!-- End Show Button -->
+
+        <!-- Start Modal  -->
+        <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="phoneModalTitleId"></h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="list-group list-group-numbered">
+                            <li
+                                class="list-group-item d-flex justify-content-between align-items-start"
+                            >
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">ReleaseDate</div>
+                                </div>
+                                <span
+                                    id="releaseDateId"
+                                    class="badge bg-primary rounded-pill"
+                                ></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-info"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- End Modal  -->
+
+        <!-- Start Footer -->
+        <footer class="mt-5">
+            <div class="container border-top border-info">
+                <p class="text-white text-center mt-3">
+                    Copyright @ 2022 All Rights Reserved.
+                </p>
+            </div>
+        </footer><!-- End Footer -->
 
         <!-- Bootstrap JS -->
         <script
